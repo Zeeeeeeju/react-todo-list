@@ -49,6 +49,10 @@
   align-items: center;
 }
 
+.todo-border span{
+  cursor: pointer
+}
+
 .todo-border img{
   width: 13px;
   height: 13px;
@@ -57,4 +61,8 @@
 .todo-form{
   display: flex;
   width: 200px;
+}
+
+.delete-line{
+  text-decoration: line-through;
 }
