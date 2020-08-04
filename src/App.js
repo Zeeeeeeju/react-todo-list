@@ -1,16 +1,19 @@
 import React from 'react';
 import './App.css';
-import TodoListContainer from './containers/TodoListContainer'
-import TodoFormContainer from './containers/TodoFormContainer'
+import { HashRouter as Router,Route} from 'react-router-dom';
+import CacheRoute from 'react-router-cache-route'
+import DonePage from './components/DonePage'
+import Main from './components/Main'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <TodoListContainer/>
-        <TodoFormContainer />
-      </header>
-    </div>
+    <Router>
+      <div>
+        <CacheRoute path="/" component={Main} exact/>
+        <Route path="/done" component={DonePage} />
+      </div>
+    </Router>  
   );
 }
 

@@ -15,11 +15,12 @@ class Todo extends React.Component{
 
     done = (e)=>{
         this.setState({isDone: !this.state.isDone})
+        this.props.updateTodo(this.props.index);
     }
 
     render(){
         return (
-            <div className="todo-border"><span onClick={this.done} className={this.state.isDone?"delete-line":"none"}>{this.props.text}</span><img onClick={this.deleteTodo} src='/delete.png'/></div>
+            <div className="todo-border"><span onClick={this.done} className={this.state.isDone?"delete-line":"none"}>{this.props.text.text}</span><img onClick={this.deleteTodo} src='/delete.png'/></div>
         )
     }
 
