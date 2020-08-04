@@ -11,7 +11,7 @@ class TodoList extends React.Component {
         }
     }
 
-	componentDidMount() {
+	componentWillMount() {
 		axios.get("https://5e9ec500fb467500166c4658.mockapi.io/todos").then((res) => {
 			this.setState({
                 list: res.data,

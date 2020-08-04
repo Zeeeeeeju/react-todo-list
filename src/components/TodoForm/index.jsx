@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 
 class TodoForm extends React.Component {
 	constructor(props) {
@@ -14,7 +15,14 @@ class TodoForm extends React.Component {
 
 	submitForm = (e) => {
 		e.preventDefault();
-		this.props.addTodo(this.state.text);
+		// this.props.addTodo(this.state.text);
+		let params = {
+			"content": this.state.text,
+			"status": false
+		}
+		axios.post("https://5e9ec500fb467500166c4658.mockapi.io/todos/",params).then((res) => {
+			window.location.reload()
+        });
 	};
 
 	render() {
