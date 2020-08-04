@@ -3,21 +3,29 @@ import React from 'react';
 import axios from 'axios';
 
 class TodoList extends React.Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            isLoaded: false
+        }
+    }
+
 	componentDidMount() {
 		axios.get("https://5e9ec500fb467500166c4658.mockapi.io/todos").then((res) => {
 			this.setState({
-				list: res.data
+                list: res.data,
+                isLoaded:true
 			});
         });
 	}
 
 	render() {
-        if(this.state == null)
+        if(!this.state.isLoaded)
             return <div></div>
 		return (
 			<div>
 				{this.state.list.map((item, index) => {
-                    console.log(item)
 					return (
 						<Todo
 							text={item}

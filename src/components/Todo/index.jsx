@@ -1,11 +1,13 @@
 import React from 'react'
+import axios from 'axios';
 
 class Todo extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
-            isDone: false
+            isDone: false,
+            data:this.props.text
         }
     }
 
@@ -15,13 +17,22 @@ class Todo extends React.Component{
 
     done = (e)=>{
         this.setState({isDone: !this.state.isDone})
-        
+        // this.props.updateTodo(this.props.index);
+        let params = {
+            "id":this.state.data.id,
+            "content":this.state.data.content,
+            "status":!this.state.data.status,
+        }
+        axios.put("https://5e9ec500fb467500166c4658.mockapi.io/todos/"+this.state.data.id,params).then((res) => {
+			this.setState({
+                data:res.data
+            })
+        });
     }
 
     render(){
-        console.log(this.props)
         return (
-            <div className="todo-border"><span onClick={this.done} className={this.props.text.status?"delete-line":"none"}>{this.props.text.content}</span><img onClick={this.deleteTodo} src='/delete.png'/></div>
+            <div className="todo-border"><span onClick={this.done} className={this.state.data.status?"delete-line":"none"}>{this.state.data.content}</span><img onClick={this.deleteTodo} src='/delete.png'/></div>
         )
     }
 
