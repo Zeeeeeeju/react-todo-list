@@ -12,7 +12,10 @@ class Todo extends React.Component{
     }
 
     deleteTodo = () =>{
-        this.props.deleteTodo(this.props.index);
+        // this.props.deleteTodo(this.props.index);
+        axios.delete("https://5e9ec500fb467500166c4658.mockapi.io/todos/"+this.state.data.id).then((res) => {
+            this.setState({delete:true})
+        });
     }
 
     done = (e)=>{
@@ -31,6 +34,8 @@ class Todo extends React.Component{
     }
 
     render(){
+        if(this.state.delete)
+            return <div></div>
         return (
             <div className="todo-border"><span onClick={this.done} className={this.state.data.status?"delete-line":"none"}>{this.state.data.content}</span><img onClick={this.deleteTodo} src='/delete.png'/></div>
         )
