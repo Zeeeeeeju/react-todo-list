@@ -1,6 +1,7 @@
 import Todo from '../Todo';
 import React from 'react';
-import axios from 'axios';
+import PubSub from 'pubsub-js';  
+import {getTodos} from '../../api/api'
 
 class TodoList extends React.Component {
 
@@ -12,13 +13,29 @@ class TodoList extends React.Component {
     }
 
 	componentWillMount() {
-		axios.get("https://5e9ec500fb467500166c4658.mockapi.io/todos").then((res) => {
+		getTodos().then((res) => {
 			this.setState({
                 list: res.data,
                 isLoaded:true
 			});
-        });
+		});
 	}
+
+	componentDidMount(){
+		this.updateEvent = PubSub.subscribe('update', function (topic,message) {  
+			getTodos().then((res) => {
+			this.setState({
+                list: res.data,
+                isLoaded:true
+			});
+		});
+		  }.bind(this)); 
+	}
+
+	componentWillUnmount(){
+		PubSub.unsubscribe(this.updateEvent);
+	}
+
 
 	render() {
         if(!this.state.isLoaded)
