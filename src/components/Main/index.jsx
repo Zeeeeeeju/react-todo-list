@@ -8,7 +8,7 @@ class Main extends React.Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<LinkList />
+					<LinkList url="/done" text="To Done Page"/>
 					<TodoListContainer />
 					<TodoFormContainer />
 				</header>

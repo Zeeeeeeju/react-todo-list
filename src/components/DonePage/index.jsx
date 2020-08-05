@@ -1,5 +1,6 @@
 import React from "react";
 import DoneListContainer from '../../containers/DoneListContainer'
+import LinkList from '../LinkList'
 
 class DonePage extends React.Component{
 
@@ -7,6 +8,7 @@ class DonePage extends React.Component{
         return (
             <header className="App-header">
                 <div>
+                    <LinkList url='/' text='To Home Page'/>
                     <DoneListContainer/>
                 </div>
             </header>

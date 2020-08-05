@@ -6,7 +6,7 @@ class LinkList extends React.Component{
     render(){
         return (
             <div className='link-list'>
-                <Link to="/done" className='link'>To Done Page</Link>
+                <Link to={this.props.url} className='link'>{this.props.text}</Link>
             </div>
         )
     }

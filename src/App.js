@@ -13,7 +13,7 @@ function App() {
         <CacheRoute path="/" component={Main} exact/>
         <Route path="/done" component={DonePage} />
       </div>
-    </Router>  
+    </Router>
   );
 }
 

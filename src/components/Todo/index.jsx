@@ -39,7 +39,7 @@ class Todo extends React.Component {
 				<span onClick={this.done} className={this.state.data.status ? 'delete-line' : 'none'}>
 					{this.state.data.content}
 				</span>
-				<img onClick={this.deleteTodo} src="/delete.png" />
+				<img onClick={this.deleteTodo} src="/delete.png" alt="none"/>
 			</div>
 		);
 	}

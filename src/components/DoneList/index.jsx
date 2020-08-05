@@ -28,6 +28,7 @@ class DoneList extends React.Component{
                 {this.state.list.map((item,index)=>{
                     if(item.status)
                         return <Todo text={item} key={index} index={index} deleteTodo={this.props.deleteTodo} updateTodo={this.props.updateTodo}/>
+                    return <div></div>
                 })}
             </div>
         )
